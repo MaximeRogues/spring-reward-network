@@ -18,19 +18,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * A system test that demonstrates how propagation settings affect transactional
  * execution.
  */
-
-// TODO-05: Review and run the testPropagation() method below.
-//
-//  It uses a transaction-manager to implement transactions manually
-//  and runs rewardAccountFor() within a transaction then performs a manual rollback.
-//  The assertions will succeed only if a database commit actually occurs.
-//
-//  - Run this test, initially it will FAIL because the data has been rolled back.
-//    We are going to address this in the subsequent steps.
-
-// TODO-07: Re-run this test, it should now pass.
-// - Think about why this test passes now.
-
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { SystemTestConfig.class })
 public class RewardNetworkPropagationTests {
@@ -64,6 +51,8 @@ public class RewardNetworkPropagationTests {
 
 		// Run the test - generate a reward
 		Dining dining = Dining.createDining("100.00", "1234123412341234", "1234567890");
+		// Le test passe parce que cette méthode déclare dans son annotation qu'elle a besoin d'une nouvelle transaction
+		// le rollback en-dessous rollback donc la transaction du niveau supérieur
 		rewardNetwork.rewardAccountFor(dining);
 
 		// Rollback the transaction started by this test
