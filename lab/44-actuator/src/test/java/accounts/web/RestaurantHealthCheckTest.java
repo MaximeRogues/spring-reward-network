@@ -36,8 +36,7 @@ public class RestaurantHealthCheckTest {
 		// Mock the Repository so getRestaurantCount returns 1
 		doReturn(1L).when(restaurantRepository).getRestaurantCount();
 
-		// TODO-15a: Invoke the health() method on RestaurantHealthCheck object
-		// (You will write health() method in the next step)
+		restaurantHealthCheck.health();
 		Health result = null;
 
 		// Health check should return UP
@@ -51,8 +50,7 @@ public class RestaurantHealthCheckTest {
 		// Mock the Repository so getRestaurantCount returns 0
 		doReturn(0L).when(restaurantRepository).getRestaurantCount();
 
-		// TODO-15b: Invoke the health() method on RestaurantHealthCheck object
-		// (You will write health() method in the next step)
+		restaurantHealthCheck.health();
 		Health result = null;
 
 		// Health check should return DOWN
